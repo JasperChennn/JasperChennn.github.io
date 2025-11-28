@@ -7,4 +7,4 @@ redirect_from:
   - /about.html
 ---
 
-I'm a third year undergraduate student from Peking University. My research interest includes image/video generation, world model and VLA.
+I'm a second year master student from Peking University. My research interest includes image/video generation, world model and VLA.
