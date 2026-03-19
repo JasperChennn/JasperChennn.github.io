@@ -3,7 +3,7 @@
 title: 'Your Post Title Here'
 
 # 日期：建议创建新文件时改成真实日期（格式：YYYY-MM-DD）
-date: 2199-01-01
+date: 1999-01-01
 
 # 语言：中文文章请填 zh，英文填 en
 lang: zh
