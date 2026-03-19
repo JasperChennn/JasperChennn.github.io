@@ -27,6 +27,40 @@ layout: default
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+
+          {%- comment -%}
+          Language switcher:
+          - Requires page.lang (e.g. "zh" / "en") and page.pair_id
+          - Searches site.posts for another post with the same pair_id but different lang
+          {%- endcomment -%}
+          {% if page.lang and page.pair_id %}
+            {% assign paired_posts = site.posts | where: "pair_id", page.pair_id %}
+            {% assign target_lang = nil %}
+            {% if page.lang == "zh" %}
+              {% assign target_lang = "en" %}
+            {% elsif page.lang == "en" %}
+              {% assign target_lang = "zh" %}
+            {% endif %}
+
+            {% if target_lang %}
+              {% assign alt_posts = paired_posts | where: "lang", target_lang %}
+              {% if alt_posts.size > 0 %}
+                {% assign alt_post = alt_posts | first %}
+                <p class="page__meta">
+                  {% if page.lang == "zh" %}
+                    <strong>语言：</strong>
+                    <span>中文</span> |
+                    <a href="{{ alt_post.url | relative_url }}">English</a>
+                  {% elsif page.lang == "en" %}
+                    <strong>Language:</strong>
+                    <a href="{{ alt_post.url | relative_url }}">中文</a> |
+                    <span>English</span>
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
