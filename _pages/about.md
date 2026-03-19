@@ -35,16 +35,12 @@ redirect_from:
 下面展示的是我最近更新的中文文章与笔记：
 
 {%- comment -%}
-首页只展示中文（或未标注语言）的文章：
-- 先过滤掉 hidden 的文章
-- 再取 lang == 'zh' 的文章
-- 再加上 lang 为空（未标注）的旧文章
+首页只展示中文文章：
+- 直接筛选 lang == 'zh'
+- 为避免 GitHub Pages 对 where_exp 的兼容性问题，这里不再使用 where_exp
 {%- endcomment -%}
-{% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
-{% assign zh_posts = visible_posts | where: "lang", "zh" %}
-{% assign no_lang_posts = visible_posts | where_exp: "post", "post.lang == nil" %}
-{% assign merged_posts = zh_posts | concat: no_lang_posts %}
-{% assign recent_posts = merged_posts | slice: 0, 5 %}
+{% assign zh_posts = site.posts | where: "lang", "zh" %}
+{% assign recent_posts = zh_posts | slice: 0, 5 %}
 {% if recent_posts.size > 0 %}
 {% for post in recent_posts %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
