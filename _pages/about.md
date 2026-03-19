@@ -40,7 +40,7 @@ redirect_from:
 - 为避免 GitHub Pages 对 where_exp 的兼容性问题，这里不再使用 where_exp
 {%- endcomment -%}
 {% assign zh_posts = site.posts | where: "lang", "zh" %}
-{% assign recent_posts = zh_posts | slice: 0, 5 %}
+{% assign recent_posts = zh_posts | slice: 0, 20 %}
 {% if recent_posts.size > 0 %}
 {% for post in recent_posts %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
