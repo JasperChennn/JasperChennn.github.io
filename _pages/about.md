@@ -31,9 +31,14 @@ redirect_from:
 
 ## 文章导览（最新）
 
-下面展示的是我最近更新的文章与笔记：
+下面展示的是我最近更新的中文文章与笔记：
 
-{% assign recent_posts = site.posts | where_exp: "post", "post.hidden != true" | slice: 0, 5 %}
+{%- comment -%}
+在首页只展示中文（或未标注语言）的文章：
+- 过滤掉标记为 lang == 'en' 的英文文章
+- 仍然保留没有 lang 字段的旧文章
+{%- endcomment -%}
+{% assign recent_posts = site.posts | where_exp: "post", "post.hidden != true and post.lang != 'en'" | slice: 0, 5 %}
 {% if recent_posts.size > 0 %}
 {% for post in recent_posts %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
