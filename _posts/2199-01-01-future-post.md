@@ -1,11 +1,61 @@
 ---
-title: 'Future Blog Post'
+# 标题：写正式标题，建议英文或中英文
+title: 'Your Post Title Here'
+
+# 日期：建议创建新文件时改成真实日期（格式：YYYY-MM-DD）
 date: 2199-01-01
-permalink: /posts/2012/08/blog-post-4/
+
+# 语言：中文文章请填 zh，英文填 en
+lang: zh
+
+# 配对 ID：同一篇内容的中英两篇文章用同一个 pair_id
+# 新建真实文章时建议改成类似：my-topic-20250319
+pair_id: your-pair-id-here
+
+# 可选：固定链接，不填则按全局 permalink 规则生成
+permalink: 
+
+# 标签：按需修改/增删
 tags:
-  - cool posts
-  - category1
-  - category2
+  - tag1
+  - tag2
+  - tag3
 ---
 
-This post will show up by default. To disable scheduling of future posts, edit `config.yml` and set `future: false`. 
+> 说明：这是一篇「模版文章」，用于快速复制创建新博文。
+> 建议每次新建文章时复制整份内容到新文件，并修改上面的 front matter 字段。
+
+## 摘要（可选）
+
+在这里写一两句话，简要说明这篇文章的主要内容和结论。
+
+## 引言 / 背景
+
+介绍写这篇文章的动机：
+- 问题是什么？
+- 为什么值得记录？
+- 目标读者是谁？
+
+## 方法 / 内容主体
+
+根据文章类型自行调整结构，例如：
+
+### 1. 问题定义
+
+### 2. 解决思路 / 理论推导
+
+### 3. 实验设置 / 实现细节
+
+### 4. 结果与分析
+
+## 总结与展望
+
+简单总结本文的核心观点，可以包括：
+- 本文的主要收获
+- 遇到的坑或经验
+- 后续可以做的延伸工作
+
+## 参考资料（可选）
+
+- [论文/博客/代码链接 1](https://example.com)
+- [论文/博客/代码链接 2](https://example.com)
