@@ -1,15 +1,37 @@
 {
     "name": "ACADEMIC PAGES",
-    "dockerComposeFile": "../docker-compose.yaml",
+    // 修正 Compose 文件路径（假设 devcontainer.json 在 .devcontainer 目录下，docker-compose.yaml 在项目根目录）
+    "dockerComposeFile": ["../docker-compose.yaml"],
     "service": "jekyll-site",
     "remoteEnv": {
-        "VSCODE_SERVER_DIR": "/home/vscode/.vscode-server"
+        "VSCODE_SERVER_DIR": "/usr/src/app/.vscode-server", // 改为项目目录，避免权限问题
+        "JEKYLL_ENV": "development" // 补充 Jekyll 开发环境变量
     },
-    "runArgs": [
-        "--user",
-        "1000:1000"
-    ],
+    // 移除冲突的 user 参数（由 Compose 配置的 user 接管）
+    "runArgs": [],
+    // 匹配容器内实际用户（ruby:3.2 镜像默认用户是 root，或改为 1000:1000）
+    "remoteUser": "root",
     "workspaceFolder": "/usr/src/app",
-    "remoteUser": "vscode",
-    "forwardPorts": [4000] // Add port forwarding
+    "forwardPorts": [4000],
+    // 关键补充：VS Code 自定义配置（提升开发体验）
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot",
+                "redhat.vscode-yaml",
+                "bungcip.better-toml",
+                "ginfuru.vscode-jekyll-syntax",
+                "DavidAnson.vscode-markdownlint"
+            ],
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash",
+                "jekyll.runInTerminal": true,
+                "files.eol": "\n"
+            }
+        }
+    },
+    // 容器启动后初始化命令（安装依赖、启动 Jekyll）
+    "postCreateCommand": "bundle install && jekyll build",
+    // 确保容器始终运行
+    "shutdownAction": "stopCompose"
 }

@@ -1,6 +1,15 @@
 # Base image: Ruby with necessary dependencies for Jekyll
 FROM ruby:3.2
 
+# 1. 先创建 apt 目录（确保目录存在）
+RUN mkdir -p /etc/apt && \
+    # 2. 直接创建 sources.list 文件，写入清华源（无需备份，因为原文件不存在）
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie main contrib non-free non-free-firmware" > /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-updates main contrib non-free non-free-firmware" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-backports main contrib non-free non-free-firmware" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ trixie-security main contrib non-free non-free-firmware" >> /etc/apt/sources.list
+
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
