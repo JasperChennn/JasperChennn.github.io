@@ -1,6 +1,6 @@
 ---
 # 标题：Omni-Effects：统一且空间可控的视觉特效生成方法
-title: 'Omni-Effects: Unified and Spatially-Controllable Visual Effects Generation'
+title: '[AAAI2026]Omni-Effects: Unified and Spatially-Controllable Visual Effects Generation'
 
 # 日期：真实发布日期（格式：YYYY-MM-DD）
 date: 2025-08-11
@@ -16,12 +16,10 @@ permalink: /omni-effects-unified-spatial-controllable-vfx-generation/
 
 # 标签
 tags:
-  - 视觉特效生成
   - VFX
-  - 空间可控生成
   - LoRA-MoE
   - 多特效合成
-  - 计算机视觉
+  - AAAI2026
 ---
 
 ## 摘要

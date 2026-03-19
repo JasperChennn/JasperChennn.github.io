@@ -1,6 +1,6 @@
 ---
 # 标题：UniEdit-I：面向统一视觉语言模型的无训练迭代式图像编辑方法
-title: 'UniEdit-I: Training-free Image Editing for Unified VLM via Iterative Understanding, Editing and Verifying'
+title: '[CVPR]UniEdit-I: Training-free Image Editing for Unified VLM via Iterative Understanding, Editing and Verifying'
 
 # 日期：真实发布日期（格式：YYYY-MM-DD）
 date: 2025-08-05
@@ -16,12 +16,9 @@ permalink: /uniedit-i-training-free-vlm-image-editing/
 
 # 标签
 tags:
-  - 视觉语言模型
-  - VLM
   - 无训练图像编辑
-  - 迭代式编辑
-  - 图像生成
-  - 计算机视觉
+  - Unified Model
+  - CVPR2026
 ---
 
 ## 摘要
