@@ -44,6 +44,13 @@ tags:
 1. **地图引导潜变量掩码（MLM）模块（编码端）**：基于图像复杂度先验信息，对潜变量空间进行选择性掩码，为复杂/关键区域保留更多潜变量信息，为简单区域掩码更多冗余信息，实现编码资源的自适应分配，提升资源利用效率；
 2. **双向预测可控生成（BPCG）模块（解码端）**：在扩散模型的生成过程中加入约束引导，基于未掩码的潜变量信息，双向预测补全掩码区域的潜变量，实现受约束的图像重建，保证局部纹理一致性与关键特征的保真度。
 
+```html
+<figure>
+  <img src="/images/posts/region-adaptive-diffusion-compression-20250617/overview.png" alt="简短说明" style="max-width:100%;" />
+  <figcaption>MRIDC整体框架</figcaption>
+</figure>
+```
+
 ### 3. 实验设置 / 实现细节
 - **实验基准**：在极低码率图像压缩的主流公开数据集上开展实验，对比当前 sota 级的生成式图像压缩方法与传统压缩方法；
 - **评价指标**：从**感知质量**（如LPIPS、SSIM、MOS主观评分）、**率失真性能**（RD曲线）、**关键区域特征一致性**三个维度进行全面评估；
@@ -55,6 +62,27 @@ tags:
 3. **率失真感知优化**：模型显著**推动了率失真感知性能曲线的提升**，在相同码率下实现更高的感知质量，在相同感知质量下实现更低的码率，为平衡压缩效率与视觉保真度建立了新的行业基准；
 4. **模块有效性**：消融实验验证了MLM与BPCG核心模块的必要性，移除任一模块均会导致资源分配效率下降、感知质量与局部一致性降低。
 
+```html
+<figure>
+  <img src="/images/posts/region-adaptive-diffusion-compression-20250617/results.png" alt="简短说明" style="max-width:100%;" />
+  <figcaption>定量结果</figcaption>
+</figure>
+```
+
+```html
+<figure>
+  <img src="/images/posts/region-adaptive-diffusion-compression-20250617/mask_type.png" alt="简短说明" style="max-width:100%;" />
+  <figcaption>不同的区域自适应方法</figcaption>
+</figure>
+```
+
+```html
+<figure>
+  <img src="/images/posts/region-adaptive-diffusion-compression-20250617/ablation.png" alt="简短说明" style="max-width:100%;" />
+  <figcaption>消融定性结构</figcaption>
+</figure>
+```
+
 ## 总结与展望
 
 ### 主要收获
@@ -64,6 +92,7 @@ tags:
 
 ### 个人小结
 当时没注意到，后面一系列的visual tokenizer都用到了类似的双编码器结构，可惜当时只探究了压缩重建，没有探索生成的方面。
+
 <!-- ### 经验与问题
 1. 潜变量空间的复杂度先验地图构建是关键，初期因先验信息提取不精准导致资源分配偏差，后续通过融合图像纹理、边缘、语义等多维度特征，优化了先验地图的生成；
 2. 扩散模型的可控生成需把握约束强度，约束过强会导致重建图像生硬，约束过弱则无法保证局部一致性，通过双向预测的动态约束策略解决了这一平衡问题；

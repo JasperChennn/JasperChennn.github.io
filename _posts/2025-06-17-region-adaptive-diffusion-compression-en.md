@@ -44,6 +44,13 @@ We propose the **Map-guided Masked Realistic Image Diffusion Codec (MRIDC)**, wh
 1. **Map-guided Latent Masking (MLM) Module (Encoding Stage)**: Based on prior information of image complexity, selectively masks the latent space to retain more latent variable information for complex/key regions and mask more redundant information for simple regions, realizing adaptive allocation of coding resources and improving resource utilization efficiency;
 2. **Bidirectional Prediction Controllable Generation (BPCG) Module (Decoding Stage)**: Adds constraint guidance to the generation process of the diffusion model, bidirectionally predicts and completes masked latent variables based on unmasked latent variable information, achieves constrained image reconstruction, and ensures local texture consistency and fidelity of key features.
 
+```html
+<figure>
+  <img src="/images/posts/region-adaptive-diffusion-compression-20250617/overview.png" alt="简短说明" style="max-width:100%;" />
+  <figcaption>MRIDC整体框架</figcaption>
+</figure>
+```
+
 ### 3. Experimental Setup / Implementation Details
 - **Experimental Benchmarks**: Experiments are conducted on mainstream public datasets for extreme-low bitrate image compression, comparing with current SOTA generative image compression methods and traditional compression methods;
 - **Evaluation Metrics**: Comprehensive evaluation from three dimensions: **perceptual quality** (e.g., LPIPS, SSIM, subjective MOS scores), **rate-distortion performance** (RD curves), and **key region feature consistency**;
@@ -54,6 +61,13 @@ We propose the **Map-guided Masked Realistic Image Diffusion Codec (MRIDC)**, wh
 2. **Key Region Fidelity**: Through region-adaptive resource allocation and constrained reconstruction, the model effectively preserves feature consistency in key image regions, solving the problems of local texture distortion and feature loss in existing methods;
 3. **Rate-Distortion Perception Optimization**: The model significantly **advances the perceptual rate-distortion performance curve**, achieving higher perceptual quality at the same bitrate and lower bitrate at the same perceptual quality, establishing a new industry benchmark for balancing compression efficiency and visual fidelity;
 4. **Module Effectiveness**: Ablation experiments verify the necessity of the core modules MLM and BPCG. Removing either module leads to decreased resource allocation efficiency, reduced perceptual quality, and lower local consistency.
+
+```html
+<figure>
+  <img src="/images/posts/region-adaptive-diffusion-compression-20250617/results.png" alt="简短说明" style="max-width:100%;" />
+  <figcaption>results</figcaption>
+</figure>
+```
 
 ## Conclusion and Outlook
 

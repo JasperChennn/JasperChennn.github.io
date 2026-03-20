@@ -55,6 +55,42 @@ tags:
 - 遇到的坑或经验
 - 后续可以做的延伸工作
 
+## 插入图片（文件结构）
+
+博文在 `_posts/`，图片**不要**放在 `_posts` 里（路径容易乱、也不利于复用）。推荐：
+
+### 推荐：`/images/` 下按文章分子目录
+
+```
+images/
+  posts/
+    2025-my-topic/        # 可用日期+简称，与某篇 post 对应
+      figure1.png
+      diagram.svg
+  profile.png              # 站点已有：头像等
+```
+
+在 Markdown 里写（**站点根路径**，GitHub Pages 上最稳）：
+
+```markdown
+![图注说明](/images/posts/2025-my-topic/figure1.png)
+```
+
+带链接、控制大小可用 HTML（主题一般支持）：
+
+```html
+<figure>
+  <img src="/images/posts/2025-my-topic/figure1.png" alt="简短说明" style="max-width:100%;" />
+  <figcaption>图 1：说明文字</figcaption>
+</figure>
+```
+
+### 备选：`/files/` 放 PDF 等大文件
+
+模板说明里提到静态文件可放在 `files/`；图片也可以放这里，例如 `files/posts/xxx/`，同样用 `/files/...` 引用。
+
+---
+
 ## 参考资料（可选）
 
 - [论文/博客/代码链接 1](https://example.com)
