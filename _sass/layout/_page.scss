@@ -106,8 +106,13 @@
     padding-left: 1.25rem;
   }
 
-  /* figures: center image + caption in posts/pages */
-  figure {
+  /*
+   * Center figure captions in post/page body.
+   * _base.scss sets global `figure { display:flex; justify-content:space-between; }`
+   * for gallery-style layouts — that prevents caption centering; override here.
+   */
+  figure:not(.half):not(.third):not(.highlight) {
+    display: block;
     margin: 1.25em 0;
     text-align: center;
 
@@ -115,10 +120,15 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      width: auto;
+      max-width: 100%;
     }
 
     figcaption {
+      display: block;
+      width: 100%;
       margin-top: 0.5em;
+      margin-bottom: 0.5em;
       font-size: $type-size-6;
       text-align: center;
     }
