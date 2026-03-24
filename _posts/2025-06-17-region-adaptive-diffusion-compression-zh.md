@@ -24,6 +24,12 @@ tags:
   - CVPR2025
 ---
 
+### 个人小结
+当时没注意到，后面一系列的visual tokenizer的自回归工作都用到了类似的双编码器结构，可惜当时只探究了压缩重建，没有探索生成的方面。
+
+code base参考了PerCo、MaskGiT、ControlNet。
+
+
 ## 摘要
 生成式图像压缩借助扩散模型的生成能力，在极低码率下已实现优异的感知保真度，但现有方法忽略了图像的非均匀复杂度，难以平衡全局感知质量与局部纹理一致性，也无法实现编码资源的高效分配。为此，本文提出地图引导掩码真实感图像扩散编解码器（MRIDC），旨在优化极低码率压缩中局部失真与全局感知质量的权衡关系。MRIDC整合了向量量化图像编码器与扩散基解码器，在编码端设计地图引导潜变量掩码（MLM）模块实现基于图像复杂度的自适应资源分配，解码端通过双向预测可控生成（BPCG）模块完成掩码潜变量的补全与图像重建。实验结果表明，MRIDC在极低码率下取得了 sota 级的感知压缩质量，有效保留了关键区域的特征一致性，推动了率失真感知性能曲线的提升，为平衡压缩效率与视觉保真度建立了新基准。
 
@@ -68,17 +74,7 @@ tags:
   <figcaption>消融定性结构</figcaption>
 </figure>
 
-## 总结与展望
-
-### 主要收获
-1. 提出MRIDC扩散编解码器，首次将**区域自适应资源分配**融入扩散基生成式图像压缩，解耦了压缩中的失真与感知质量，解决了现有方法资源分配不均的核心问题；
-2. 设计编码端MLM与解码端BPCG专用模块，实现了从潜变量掩码到约束性重建的端到端优化，保证了极低码率下全局感知质量与局部纹理一致性的双重提升；
-3. 在CVPR 2025发表的研究成果中，MRIDC在极低码率感知图像压缩上取得SOTA性能，推动了率失真感知性能曲线的进步，建立了压缩效率与视觉保真度平衡的新基准。
-
-### 个人小结
-当时没注意到，后面一系列的visual tokenizer都用到了类似的双编码器结构，可惜当时只探究了压缩重建，没有探索生成的方面。
 
 
 ## 参考资料
 - [Decouple Distortion from Perception (CVPR 2025 OpenAccess)](https://openaccess.thecvf.com/content/CVPR2025/html/Xu_Decouple_Distortion_from_Perception_Region_Adaptive_Diffusion_for_Extreme-low_Bitrate_CVPR_2025_paper.html)
-- [CVPR 2025 Conference Proceedings](https://cvpr.thecvf.com/2025/)
