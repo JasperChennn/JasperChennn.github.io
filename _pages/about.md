@@ -27,7 +27,16 @@ redirect_from:
 - **生成式建模（Generative Modeling）**：可控的图像/视频合成、长视频生成、视频推理加速、视觉表征学习，
 - **世界模型（World Models）**：构建3D一致和具备物理知识感知的世界模型、WM驱动的动作决策WAM/VA
 
-## pub
+## 开源项目
+
+- **VideoGen**：自研的基于diffusers开发的的图像/视频生成的仓库（个人感觉比[diffuion-pipe](https://github.com/tdrussell/diffusion-pipe), [diffsynth-studio](https://github.com/modelscope/diffsynth-studio)更加快捷高效）。正在开发成更完善的版本，欢迎使用、提 issue 或 PR，顺便求求Star～。  
+  [EasyVidGen](https://github.com/JasperChennn/EasyVidGen)
+
+- **AstraWorld**
+- **ConceptWeaver**
+- **Arxiv-Daily-AI** 调deepseek API的每日arxiv速读,欢迎加入收藏夹～
+  [arxiv-daily-AI](https://jasperchennn.github.io/daily-arXiv-ai-enhanced/)
+## 最近文章
 
 最近更新的一些文章与笔记：
 
